@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sri Sri Psychiatric Clinic | Dr. K Suresh Reddy</title>
+  
+  <!-- Tailwind CSS for Production Styling -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+    .fade-in {
+      transition-property: all;
+      transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
+      transition-duration: 1000ms;
+    }
+    /* Hide scrollbar for clean UI but allow scroll */
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: #f1f5f9; }
+    ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+  </style>
+</head>
+<body class="min-h-screen bg-slate-50 text-slate-800 selection:bg-sky-200 selection:text-sky-900">
+
+  <!-- Top Bar -->
+  <div class="hidden md:flex justify-between items-center bg-sky-900 text-sky-50 px-8 py-2 text-sm font-medium">
+    <div class="flex space-x-6">
+      <span class="flex items-center"><i data-lucide="map-pin" class="w-4 h-4 mr-2 text-sky-300"></i> Nizampet, Hyderabad</span>
+      <span class="flex items-center"><i data-lucide="clock" class="w-4 h-4 mr-2 text-sky-300"></i> Mon - Sat: 10:00 AM - 8:00 PM</span>
+    </div>
+    <div class="flex space-x-4">
+      <span class="flex items-center font-bold text-white"><i data-lucide="phone" class="w-4 h-4 mr-2"></i> 09014385089</span>
+    </div>
+  </div>
+
+  <!-- Navigation -->
+  <nav class="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-slate-200 shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between h-20 items-center">
+        <div class="flex items-center cursor-pointer" onclick="scrollToSection('home')">
+          <div class="w-10 h-10 bg-gradient-to-br from-sky-500 to-blue-700 rounded-xl flex items-center justify-center mr-3 shadow-md">
+            <i data-lucide="brain" class="w-6 h-6 text-white"></i>
+          </div>
+          <div>
+            <h1 class="text-xl font-bold tracking-tight text-slate-900 leading-tight">Sri Sri <span class="text-sky-600">Psychiatric Clinic</span></h1>
+            <p class="text-xs text-slate-500 font-medium tracking-wide uppercase">Dr. K Suresh Reddy</p>
+          </div>
+        </div>
+
+        <!-- Desktop Menu -->
+        <div class="hidden md:flex items-center space-x-8">
+          <button onclick="scrollToSection('home')" class="text-slate-600 hover:text-sky-600 font-medium transition-colors">Home</button>
+          <button onclick="scrollToSection('about')" class="text-slate-600 hover:text-sky-600 font-medium transition-colors">About</button>
+          <button onclick="scrollToSection('services')" class="text-slate-600 hover:text-sky-600 font-medium transition-colors">Services</button>
+          <button onclick="scrollToSection('reviews')" class="text-slate-600 hover:text-sky-600 font-medium transition-colors">Reviews</button>
+          <button onclick="scrollToSection('contact')" class="text-slate-600 hover:text-sky-600 font-medium transition-colors">Contact</button>
+          <button onclick="scrollToSection('appointment')" class="bg-sky-600 hover:bg-sky-700 text-white px-6 py-2.5 rounded-full font-semibold shadow-[0_4px_14px_0_rgb(2,132,199,0.39)] transition-all hover:shadow-[0_6px_20px_rgba(2,132,199,0.23)] hover:-translate-y-0.5">
+            Book Appointment
+          </button>
+        </div>
+
+        <!-- Mobile Menu Button -->
+        <div class="md:hidden flex items-center">
+          <button onclick="toggleMenu()" class="text-slate-600" id="menu-btn">
+            <i data-lucide="menu" class="w-7 h-7"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Menu Panel -->
+    <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-slate-100 absolute w-full shadow-lg">
+      <div class="px-4 pt-2 pb-6 space-y-2">
+        <button onclick="scrollToSection('home')" class="block w-full text-left px-3 py-3 text-base font-medium text-slate-700 hover:text-sky-600 hover:bg-sky-50 rounded-lg">Home</button>
+        <button onclick="scrollToSection('about')" class="block w-full text-left px-3 py-3 text-base font-medium text-slate-700 hover:text-sky-600 hover:bg-sky-50 rounded-lg">About</button>
+        <button onclick="scrollToSection('services')" class="block w-full text-left px-3 py-3 text-base font-medium text-slate-700 hover:text-sky-600 hover:bg-sky-50 rounded-lg">Services</button>
+        <button onclick="scrollToSection('reviews')" class="block w-full text-left px-3 py-3 text-base font-medium text-slate-700 hover:text-sky-600 hover:bg-sky-50 rounded-lg">Reviews</button>
+        <button onclick="scrollToSection('contact')" class="block w-full text-left px-3 py-3 text-base font-medium text-slate-700 hover:text-sky-600 hover:bg-sky-50 rounded-lg">Contact</button>
+        <button onclick="scrollToSection('appointment')" class="w-full mt-4 bg-sky-600 text-white px-6 py-3 rounded-xl font-semibold shadow-md">
+          Book Appointment
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section id="home" class="relative pt-20 pb-32 overflow-hidden">
+    <div class="absolute top-0 right-0 -translate-y-12 translate-x-1/3 w-[800px] h-[800px] bg-sky-100/50 rounded-full blur-3xl -z-10"></div>
+    <div class="absolute bottom-0 left-0 translate-y-1/3 -translate-x-1/3 w-[600px] h-[600px] bg-blue-50 rounded-full blur-3xl -z-10"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        
+        <div class="fade-in opacity-0 translate-y-12">
+          <div class="inline-flex items-center px-4 py-2 rounded-full bg-sky-100 text-sky-700 font-semibold text-sm mb-6 border border-sky-200 shadow-sm">
+            <i data-lucide="star" class="w-4 h-4 mr-2 fill-sky-500 text-sky-500"></i> Top Rated Psychiatrist in Nizampet
+          </div>
+          <h2 class="text-5xl md:text-6xl font-extrabold text-slate-900 tracking-tight leading-[1.15] mb-6">
+            Advanced Psychiatric Care for <span class="text-transparent bg-clip-text bg-gradient-to-r from-sky-600 to-blue-700">Mind and Brain</span>
+          </h2>
+          <p class="text-lg md:text-xl text-slate-600 mb-8 max-w-lg leading-relaxed">
+            Expert diagnosis and compassionate treatment for mental health conditions. Take the first step towards a balanced and peaceful life.
+          </p>
+          <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+            <button onclick="scrollToSection('appointment')" class="flex justify-center items-center bg-sky-600 hover:bg-sky-700 text-white px-8 py-4 rounded-full font-bold text-lg shadow-[0_4px_20px_0_rgb(2,132,199,0.4)] transition-all hover:shadow-[0_6px_25px_rgba(2,132,199,0.3)] hover:-translate-y-1">
+              Book Appointment <i data-lucide="chevron-right" class="ml-2 w-5 h-5"></i>
+            </button>
+            <a href="tel:09014385089" class="flex justify-center items-center bg-white border-2 border-slate-200 hover:border-sky-200 hover:bg-sky-50 text-slate-700 px-8 py-4 rounded-full font-bold text-lg transition-all shadow-sm">
+              <i data-lucide="phone" class="mr-2 w-5 h-5 text-sky-600"></i> Call 09014385089
+            </a>
+          </div>
+        </div>
+        
+        <div class="fade-in opacity-0 translate-y-12 relative hidden lg:block" style="transition-delay: 200ms;">
+          <div class="relative rounded-3xl overflow-hidden shadow-[0_20px_50px_rgba(8,_112,_184,_0.15)] border-8 border-white">
+            <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&q=80&w=1000" alt="Modern Clinic Facility" class="w-full h-[500px] object-cover" />
+            <div class="absolute inset-0 bg-gradient-to-t from-sky-900/60 to-transparent"></div>
+            <div class="absolute bottom-6 left-6 right-6 bg-white/90 backdrop-blur-md p-6 rounded-2xl shadow-lg border border-white/50">
+              <div class="flex items-center justify-between">
+                <div>
+                  <h3 class="font-bold text-slate-900 text-lg">Dr. K Suresh Reddy</h3>
+                  <p class="text-sky-600 font-medium">Senior Psychiatrist</p>
+                </div>
+                <div class="bg-sky-100 p-3 rounded-full">
+                  <i data-lucide="award" class="w-6 h-6 text-sky-600"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Strip -->
+  <section class="bg-white border-y border-slate-200 py-10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center divide-x divide-slate-100">
+        <div class="fade-in opacity-0 translate-y-12" style="transition-delay: 0ms;">
+          <i data-lucide="star" class="w-6 h-6 text-yellow-400 mx-auto mb-2 fill-yellow-400"></i>
+          <div class="text-3xl font-extrabold text-slate-900 mb-1">4.9/5</div>
+          <div class="text-sm font-medium text-slate-500 uppercase tracking-wider">Rating</div>
+        </div>
+        <div class="fade-in opacity-0 translate-y-12" style="transition-delay: 100ms;">
+          <i data-lucide="award" class="w-6 h-6 text-sky-500 mx-auto mb-2"></i>
+          <div class="text-3xl font-extrabold text-slate-900 mb-1">15+ Years</div>
+          <div class="text-sm font-medium text-slate-500 uppercase tracking-wider">Experience</div>
+        </div>
+        <div class="fade-in opacity-0 translate-y-12" style="transition-delay: 200ms;">
+          <i data-lucide="thumbs-up" class="w-6 h-6 text-sky-500 mx-auto mb-2"></i>
+          <div class="text-3xl font-extrabold text-slate-900 mb-1">10,000+</div>
+          <div class="text-sm font-medium text-slate-500 uppercase tracking-wider">Happy Patients</div>
+        </div>
+        <div class="fade-in opacity-0 translate-y-12" style="transition-delay: 300ms;">
+          <i data-lucide="users" class="w-6 h-6 text-sky-500 mx-auto mb-2"></i>
+          <div class="text-3xl font-extrabold text-slate-900 mb-1">Professional</div>
+          <div class="text-sm font-medium text-slate-500 uppercase tracking-wider">Expert Staff</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="py-24 bg-slate-50 relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid md:grid-cols-2 gap-16 items-center">
+        <div class="fade-in opacity-0 translate-y-12">
+          <div class="relative">
+            <div class="aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl bg-slate-200 relative">
+              <!-- Photo Updated as per instructions -->
+              <img src="/suresh.jpg" alt="Dr. K Suresh Reddy" class="w-full h-full object-cover object-center" />
+            </div>
+            <div class="absolute -bottom-6 -right-6 w-48 h-48 bg-sky-100 rounded-full -z-10"></div>
+            <div class="absolute -top-6 -left-6 w-32 h-32 bg-blue-50 rounded-full -z-10"></div>
+          </div>
+        </div>
+        
+        <div class="fade-in opacity-0 translate-y-12" style="transition-delay: 200ms;">
+          <h4 class="text-sky-600 font-bold tracking-wider uppercase text-sm mb-2">About The Doctor</h4>
+          <h2 class="text-4xl font-extrabold text-slate-900 mb-6">Dr. K Suresh Reddy</h2>
+          <p class="text-xl text-slate-700 mb-6 leading-relaxed">
+            A highly experienced and compassionate Psychiatrist dedicated to providing evidence-based treatments for a wide spectrum of mental health conditions.
+          </p>
+          <div class="space-y-4 mb-8 text-slate-600">
+            <p>
+              With specialized training and years of clinical experience, Dr. Reddy focuses on understanding the root cause of mental distress. He believes in a holistic approach combining therapy, lifestyle modifications, and medication when necessary to achieve optimal mental wellness.
+            </p>
+            <p>
+              Specializing in the treatment of depression, anxiety, stress disorders, sleep disturbances, and addiction, the clinic offers a safe, confidential, and non-judgmental environment for recovery.
+            </p>
+          </div>
+          <ul class="grid sm:grid-cols-2 gap-4 mb-8">
+            <li class="flex items-center text-slate-800 font-medium"><div class="w-6 h-6 rounded-full bg-sky-100 flex items-center justify-center mr-3"><div class="w-2 h-2 rounded-full bg-sky-600"></div></div>Evidence-Based Care</li>
+            <li class="flex items-center text-slate-800 font-medium"><div class="w-6 h-6 rounded-full bg-sky-100 flex items-center justify-center mr-3"><div class="w-2 h-2 rounded-full bg-sky-600"></div></div>Confidential Environment</li>
+            <li class="flex items-center text-slate-800 font-medium"><div class="w-6 h-6 rounded-full bg-sky-100 flex items-center justify-center mr-3"><div class="w-2 h-2 rounded-full bg-sky-600"></div></div>Holistic Approach</li>
+            <li class="flex items-center text-slate-800 font-medium"><div class="w-6 h-6 rounded-full bg-sky-100 flex items-center justify-center mr-3"><div class="w-2 h-2 rounded-full bg-sky-600"></div></div>Personalized Treatment</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section id="services" class="py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="fade-in opacity-0 translate-y-12 text-center max-w-3xl mx-auto mb-16">
+        <h4 class="text-sky-600 font-bold tracking-wider uppercase text-sm mb-2">Our Expertise</h4>
+        <h2 class="text-4xl font-extrabold text-slate-900 mb-4">Comprehensive Psychiatric Services</h2>
+        <p class="text-lg text-slate-600">
+          We offer specialized care tailored to your unique mental health needs, utilizing the latest medical guidelines.
+        </p>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        <!-- Service Cards -->
+        <div class="fade-in opacity-0 translate-y-12 group bg-slate-50 rounded-2xl p-8 border border-slate-100 hover:border-sky-100 hover:bg-white transition-all duration-300 hover:shadow-[0_8px_30px_rgb(0,0,0,0.06)] hover:-translate-y-2 h-full flex flex-col" style="transition-delay: 0ms;">
+          <div class="w-14 h-14 rounded-xl bg-sky-100 text-sky-600 flex items-center justify-center mb-6 group-hover:bg-sky-600 group-hover:text-white transition-colors duration-300 shadow-sm"><i data-lucide="brain" class="w-6 h-6"></i></div>
+          <h3 class="text-xl font-bold text-slate-900 mb-3">Depression Treatment</h3>
+          <p class="text-slate-600 leading-relaxed flex-grow">Comprehensive care and therapies to overcome depressive disorders and regain joy.</p>
+        </div>
+        <div class="fade-in opacity-0 translate-y-12 group bg-slate-50 rounded-2xl p-8 border border-slate-100 hover:border-sky-100 hover:bg-white transition-all duration-300 hover:shadow-[0_8px_30px_rgb(0,0,0,0.06)] hover:-translate-y-2 h-full flex flex-col" style="transition-delay: 50ms;">
+          <div class="w-14 h-14 rounded-xl bg-sky-100 text-sky-600 flex items-center justify-center mb-6 group-hover:bg-sky-600 group-hover:text-white transition-colors duration-300 shadow-sm"><i data-lucide="activity" class="w-6 h-6"></i></div>
+          <h3 class="text-xl font-bold text-slate-900 mb-3">Anxiety Treatment</h3>
+          <p class="text-slate-600 leading-relaxed flex-grow">Effective management strategies for generalized anxiety, panic attacks, and phobias.</p>
+        </div>
+        <div class="fade-in opacity-0 translate-y-12 group bg-slate-50 rounded-2xl p-8 border border-slate-100 hover:border-sky-100 hover:bg-white transition-all duration-300 hover:shadow-[0_8px_30px_rgb(0,0,0,0.06)] hover:-translate-y-2 h-full flex flex-col" style="transition-delay: 100ms;">
+          <div class="w-14 h-14 rounded-xl bg-sky-100 text-sky-600 flex items-center justify-center mb-6 group-hover:bg-sky-600 group-hover:text-white transition-colors duration-300 shadow-sm"><i data-lucide="shield" class="w-6 h-6"></i></div>
+          <h3 class="text-xl font-bold text-slate-900 mb-3">Stress Management</h3>
+          <p class="text-slate-600 leading-relaxed flex-grow">Techniques and counseling to handle life, work, and personal stress effectively.</p>
+        </div>
+        <div class="fade-in opacity-0 translate-y-12 group bg-slate-50 rounded-2xl p-8 border border-slate-100 hover:border-sky-100 hover:bg-white transition-all duration-300 hover:shadow-[0_8px_30px_rgb(0,0,0,0.06)] hover:-translate-y-2 h-full flex flex-col" style="transition-delay: 150ms;">
+          <div class="w-14 h-14 rounded-xl bg-sky-100 text-sky-600 flex items-center justify-center mb-6 group-hover:bg-sky-600 group-hover:text-white transition-colors duration-300 shadow-sm"><i data-lucide="moon" class="w-6 h-6"></i></div>
+          <h3 class="text-xl font-bold text-slate-900 mb-3">Sleep Disorders</h3>
+          <p class="text-slate-600 leading-relaxed flex-grow">Diagnosis and treatment for insomnia and other sleep-related issues to restore rest.</p>
+        </div>
+        <div class="fade-in opacity-0 translate-y-12 group bg-slate-50 rounded-2xl p-8 border border-slate-100 hover:border-sky-100 hover:bg-white transition-all duration-300 hover:shadow-[0_8px_30px_rgb(0,0,0,0.06)] hover:-translate-y-2 h-full flex flex-col" style="transition-delay: 200ms;">
+          <div class="w-14 h-14 rounded-xl bg-sky-100 text-sky-600 flex items-center justify-center mb-6 group-hover:bg-sky-600 group-hover:text-white transition-colors duration-300 shadow-sm"><i data-lucide="heart-handshake" class="w-6 h-6"></i></div>
+          <h3 class="text-xl font-bold text-slate-900 mb-3">Addiction Treatment</h3>
+          <p class="text-slate-600 leading-relaxed flex-grow">Compassionate and supportive de-addiction programs for lasting recovery.</p>
+        </div>
+        <div class="fade-in opacity-0 translate-y-12 group bg-slate-50 rounded-2xl p-8 border border-slate-100 hover:border-sky-100 hover:bg-white transition-all duration-300 hover:shadow-[0_8px_30px_rgb(0,0,0,0.06)] hover:-translate-y-2 h-full flex flex-col" style="transition-delay: 250ms;">
+          <div class="w-14 h-14 rounded-xl bg-sky-100 text-sky-600 flex items-center justify-center mb-6 group-hover:bg-sky-600 group-hover:text-white transition-colors duration-300 shadow-sm"><i data-lucide="target" class="w-6 h-6"></i></div>
+          <h3 class="text-xl font-bold text-slate-900 mb-3">Memory & Focus</h3>
+          <p class="text-slate-600 leading-relaxed flex-grow">Evaluation and customized treatment plans for concentration issues and memory loss.</p>
+        </div>
+        <div class="fade-in opacity-0 translate-y-12 group bg-slate-50 rounded-2xl p-8 border border-slate-100 hover:border-sky-100 hover:bg-white transition-all duration-300 hover:shadow-[0_8px_30px_rgb(0,0,0,0.06)] hover:-translate-y-2 h-full flex flex-col" style="transition-delay: 300ms;">
+          <div class="w-14 h-14 rounded-xl bg-sky-100 text-sky-600 flex items-center justify-center mb-6 group-hover:bg-sky-600 group-hover:text-white transition-colors duration-300 shadow-sm"><i data-lucide="users" class="w-6 h-6"></i></div>
+          <h3 class="text-xl font-bold text-slate-900 mb-3">Counselling</h3>
+          <p class="text-slate-600 leading-relaxed flex-grow">Professional therapy sessions for individuals, couples, and families to navigate challenges.</p>
+        </div>
+        <div class="fade-in opacity-0 translate-y-12 group bg-slate-50 rounded-2xl p-8 border border-slate-100 hover:border-sky-100 hover:bg-white transition-all duration-300 hover:shadow-[0_8px_30px_rgb(0,0,0,0.06)] hover:-translate-y-2 h-full flex flex-col" style="transition-delay: 350ms;">
+          <div class="w-14 h-14 rounded-xl bg-sky-100 text-sky-600 flex items-center justify-center mb-6 group-hover:bg-sky-600 group-hover:text-white transition-colors duration-300 shadow-sm"><i data-lucide="pill" class="w-6 h-6"></i></div>
+          <h3 class="text-xl font-bold text-slate-900 mb-3">Medication Management</h3>
+          <p class="text-slate-600 leading-relaxed flex-grow">Careful prescribing and continuous monitoring of psychiatric medications.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Reviews Section -->
+  <section id="reviews" class="py-24 bg-slate-900 text-white relative overflow-hidden">
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-4xl h-[400px] bg-sky-500/20 blur-[120px] rounded-full pointer-events-none"></div>
+    
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="fade-in opacity-0 translate-y-12 text-center mb-16">
+        <div class="flex justify-center mb-4">
+          <div class="flex space-x-1">
+            <i data-lucide="star" class="w-8 h-8 text-yellow-400 fill-yellow-400"></i>
+            <i data-lucide="star" class="w-8 h-8 text-yellow-400 fill-yellow-400"></i>
+            <i data-lucide="star" class="w-8 h-8 text-yellow-400 fill-yellow-400"></i>
+            <i data-lucide="star" class="w-8 h-8 text-yellow-400 fill-yellow-400"></i>
+            <i data-lucide="star" class="w-8 h-8 text-yellow-400 fill-yellow-400"></i>
+          </div>
+        </div>
+        <h2 class="text-4xl font-extrabold mb-4">4.9 / 5 Average Rating</h2>
+        <p class="text-sky-200 text-lg max-w-2xl mx-auto">Based on hundreds of successful patient recoveries and positive feedback.</p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="fade-in opacity-0 translate-y-12 bg-slate-800/50 backdrop-blur-sm border border-slate-700 p-8 rounded-2xl h-full flex flex-col" style="transition-delay: 0ms;">
+          <div class="flex text-yellow-400 mb-6">
+            <i data-lucide="star" class="w-5 h-5 fill-yellow-400"></i><i data-lucide="star" class="w-5 h-5 fill-yellow-400"></i><i data-lucide="star" class="w-5 h-5 fill-yellow-400"></i><i data-lucide="star" class="w-5 h-5 fill-yellow-400"></i><i data-lucide="star" class="w-5 h-5 fill-yellow-400"></i>
+          </div>
+          <p class="text-slate-300 text-lg italic mb-8 flex-grow">"Excellent doctor, very calm and understanding. He listened to all my problems patiently and the medication worked wonders."</p>
+          <div class="flex items-center">
+            <div class="w-10 h-10 rounded-full bg-sky-600 flex items-center justify-center text-white font-bold mr-4">R</div>
+            <div><p class="font-bold text-white">Rajesh K.</p><p class="text-sm text-slate-400">Verified Patient</p></div>
+          </div>
+        </div>
+
+        <div class="fade-in opacity-0 translate-y-12 bg-slate-800/50 backdrop-blur-sm border border-slate-700 p-8 rounded-2xl h-full flex flex-col" style="transition-delay: 150ms;">
+          <div class="flex text-yellow-400 mb-6">
+            <i data-lucide="star" class="w-5 h-5 fill-yellow-400"></i><i data-lucide="star" class="w-5 h-5 fill-yellow-400"></i><i data-lucide="star" class="w-5 h-5 fill-yellow-400"></i><i data-lucide="star" class="w-5 h-5 fill-yellow-400"></i><i data-lucide="star" class="w-5 h-5 fill-yellow-400"></i>
+          </div>
+          <p class="text-slate-300 text-lg italic mb-8 flex-grow">"Very good treatment for depression. I have been visiting for 3 months and I can see a massive improvement in my daily life."</p>
+          <div class="flex items-center">
+            <div class="w-10 h-10 rounded-full bg-sky-600 flex items-center justify-center text-white font-bold mr-4">P</div>
+            <div><p class="font-bold text-white">Priya S.</p><p class="text-sm text-slate-400">Verified Patient</p></div>
+          </div>
+        </div>
+
+        <div class="fade-in opacity-0 translate-y-12 bg-slate-800/50 backdrop-blur-sm border border-slate-700 p-8 rounded-2xl h-full flex flex-col" style="transition-delay: 300ms;">
+          <div class="flex text-yellow-400 mb-6">
+            <i data-lucide="star" class="w-5 h-5 fill-yellow-400"></i><i data-lucide="star" class="w-5 h-5 fill-yellow-400"></i><i data-lucide="star" class="w-5 h-5 fill-yellow-400"></i><i data-lucide="star" class="w-5 h-5 fill-yellow-400"></i><i data-lucide="star" class="w-5 h-5 fill-yellow-400"></i>
+          </div>
+          <p class="text-slate-300 text-lg italic mb-8 flex-grow">"Doctor listens patiently and doesn't rush the appointment. The clinic atmosphere is also very soothing and professional."</p>
+          <div class="flex items-center">
+            <div class="w-10 h-10 rounded-full bg-sky-600 flex items-center justify-center text-white font-bold mr-4">A</div>
+            <div><p class="font-bold text-white">Anil V.</p><p class="text-sm text-slate-400">Verified Patient</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery Section -->
+  <section class="py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="fade-in opacity-0 translate-y-12 text-center mb-16">
+        <h4 class="text-sky-600 font-bold tracking-wider uppercase text-sm mb-2">Clinic Environment</h4>
+        <h2 class="text-4xl font-extrabold text-slate-900 mb-4">Our Facilities</h2>
+        <p class="text-slate-600 text-lg">A calm, welcoming, and professional space designed for your comfort.</p>
+      </div>
+
+      <!-- Facilities images -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+        <div class="fade-in opacity-0 translate-y-12 md:col-span-2 md:row-span-2" style="transition-delay: 100ms;">
+          <div class="rounded-2xl overflow-hidden h-full min-h-[300px] shadow-sm group relative">
+            <img src="/1.jpg" alt="Clinic Facility 1" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+            <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+          </div>
+        </div>
+        <div class="fade-in opacity-0 translate-y-12" style="transition-delay: 200ms;">
+          <div class="rounded-2xl overflow-hidden h-48 sm:h-64 shadow-sm group relative">
+            <img src="/2.jpg" alt="Clinic Facility 2" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+          </div>
+        </div>
+        <div class="fade-in opacity-0 translate-y-12" style="transition-delay: 300ms;">
+          <div class="rounded-2xl overflow-hidden h-48 sm:h-64 shadow-sm group relative">
+            <img src="/3.jpg" alt="Clinic Facility 3" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+          </div>
+        </div>
+        <div class="fade-in opacity-0 translate-y-12" style="transition-delay: 400ms;">
+          <div class="rounded-2xl overflow-hidden h-48 sm:h-64 shadow-sm group relative">
+            <img src="/4.jpg" alt="Clinic Facility 4" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+          </div>
+        </div>
+        <div class="fade-in opacity-0 translate-y-12" style="transition-delay: 500ms;">
+          <div class="rounded-2xl overflow-hidden h-48 sm:h-64 shadow-sm group relative">
+            <img src="/5.jpg" alt="Clinic Facility 5" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Appointment & Contact Section -->
+  <section id="appointment" class="py-24 bg-slate-50 border-t border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="bg-white rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] overflow-hidden border border-slate-100">
+        <div class="grid lg:grid-cols-5">
+          
+          <!-- Contact Info & Map -->
+          <div class="lg:col-span-2 bg-sky-900 text-white p-10 md:p-12 relative overflow-hidden flex flex-col justify-between">
+            <div class="absolute top-0 right-0 w-64 h-64 bg-sky-500/20 rounded-full blur-3xl -translate-y-1/2 translate-x-1/3"></div>
+            <div class="relative z-10">
+              <h3 class="text-3xl font-bold mb-8">Get in Touch</h3>
+              
+              <div class="space-y-8">
+                <div class="flex items-start">
+                  <div class="bg-sky-800/50 p-3 rounded-xl mr-5 shrink-0">
+                    <i data-lucide="map-pin" class="w-6 h-6 text-sky-300"></i>
+                  </div>
+                  <div>
+                    <h4 class="font-semibold text-lg mb-1">Clinic Address</h4>
+                    <p class="text-sky-100 leading-relaxed text-sm">
+                      Bhavya's Srinivasam Complex,<br />
+                      Beside ICICI Bank, Opp. Vertex Prestige,<br />
+                      Nizampet, Hyderabad,<br />
+                      Telangana, India
+                    </p>
+                  </div>
+                </div>
+
+                <div class="flex items-start">
+                  <div class="bg-sky-800/50 p-3 rounded-xl mr-5 shrink-0">
+                    <i data-lucide="phone" class="w-6 h-6 text-sky-300"></i>
+                  </div>
+                  <div>
+                    <h4 class="font-semibold text-lg mb-1">Contact Number</h4>
+                    <p class="text-sky-100 text-sm">09014385089</p>
+                    <p class="text-sky-300 text-xs mt-1">Available for calls and WhatsApp</p>
+                  </div>
+                </div>
+
+                <div class="flex items-start">
+                  <div class="bg-sky-800/50 p-3 rounded-xl mr-5 shrink-0">
+                    <i data-lucide="clock" class="w-6 h-6 text-sky-300"></i>
+                  </div>
+                  <div>
+                    <h4 class="font-semibold text-lg mb-1">Clinic Timings</h4>
+                    <p class="text-sky-100 text-sm">Mon - Sat: 10:00 AM - 8:00 PM</p>
+                    <p class="text-sky-100 text-sm">Sunday: Closed</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Map Embed -->
+            <div class="mt-12 rounded-xl overflow-hidden h-48 border border-sky-700/50 relative z-10 shadow-inner">
+              <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1m3!1d3805.1118182740924!2d78.3756272!3d17.5021287!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb9210287e07a3%3A0x88fdbaf86a8770a3!2sNizampet%2C%20Hyderabad%2C%20Telangana!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" 
+                width="100%" 
+                height="100%" 
+                style="border: 0;" 
+                allowfullscreen="" 
+                loading="lazy" 
+                referrerpolicy="no-referrer-when-downgrade"
+                title="Clinic Location"
+              ></iframe>
+            </div>
+          </div>
+
+          <!-- Book Appointment Calendar Section -->
+          <div class="lg:col-span-3 p-10 md:p-12 bg-white flex flex-col justify-center">
+            <h3 class="text-3xl font-bold text-slate-900 mb-2">Book Appointment</h3>
+            <p class="text-slate-600 mb-8">Select your preferred date and time to schedule a consultation with the doctor.</p>
+            
+            <div id="form-status"></div>
+
+            <div class="mb-6">
+              <label class="block text-sm font-medium text-slate-700 mb-2">Select Date</label>
+              <input 
+                type="date" 
+                id="appointment-date"
+                class="w-full px-4 py-4 rounded-xl border border-slate-200 focus:border-sky-500 focus:ring-2 focus:ring-sky-200 outline-none transition-all bg-slate-50 focus:bg-white text-slate-700" 
+              />
+            </div>
+
+            <div id="available-timings" class="mb-8 transition-all duration-500 hidden">
+              <label class="block text-sm font-medium text-slate-700 mb-3" id="timings-label">Available Timings</label>
+              <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                <button type="button" onclick="selectTime('10:00 AM')" data-time="10:00 AM" class="time-btn py-3 px-4 rounded-xl border font-medium transition-all bg-white text-slate-600 border-slate-200 hover:border-sky-300 hover:bg-sky-50">10:00 AM</button>
+                <button type="button" onclick="selectTime('11:00 AM')" data-time="11:00 AM" class="time-btn py-3 px-4 rounded-xl border font-medium transition-all bg-white text-slate-600 border-slate-200 hover:border-sky-300 hover:bg-sky-50">11:00 AM</button>
+                <button type="button" onclick="selectTime('12:00 PM')" data-time="12:00 PM" class="time-btn py-3 px-4 rounded-xl border font-medium transition-all bg-white text-slate-600 border-slate-200 hover:border-sky-300 hover:bg-sky-50">12:00 PM</button>
+                <button type="button" onclick="selectTime('5:00 PM')" data-time="5:00 PM" class="time-btn py-3 px-4 rounded-xl border font-medium transition-all bg-white text-slate-600 border-slate-200 hover:border-sky-300 hover:bg-sky-50">5:00 PM</button>
+                <button type="button" onclick="selectTime('6:00 PM')" data-time="6:00 PM" class="time-btn py-3 px-4 rounded-xl border font-medium transition-all bg-white text-slate-600 border-slate-200 hover:border-sky-300 hover:bg-sky-50">6:00 PM</button>
+                <button type="button" onclick="selectTime('7:00 PM')" data-time="7:00 PM" class="time-btn py-3 px-4 rounded-xl border font-medium transition-all bg-white text-slate-600 border-slate-200 hover:border-sky-300 hover:bg-sky-50">7:00 PM</button>
+              </div>
+            </div>
+
+            <div id="confirm-btn-container" class="fade-in hidden">
+              <button 
+                onclick="confirmAppointment()"
+                class="w-full bg-sky-600 hover:bg-sky-700 text-white font-bold py-4 rounded-xl shadow-[0_4px_14px_0_rgb(2,132,199,0.39)] transition-all hover:shadow-[0_6px_20px_rgba(2,132,199,0.23)] hover:-translate-y-0.5 text-lg"
+              >
+                Confirm Appointment
+              </button>
+              <p class="text-center text-xs text-slate-500 mt-4" id="selected-time-text">
+                You are booking a slot.
+              </p>
+            </div>
+            
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Floating Action Buttons -->
+  <div class="fixed bottom-6 right-6 flex flex-col space-y-4 z-50">
+    <a href="https://wa.me/919014385089" target="_blank" rel="noopener noreferrer" class="w-14 h-14 bg-[#25D366] text-white rounded-full flex items-center justify-center shadow-lg hover:bg-[#20bd5a] hover:scale-110 transition-all duration-300">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-7 h-7">
+        <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+      </svg>
+    </a>
+    <a href="tel:09014385089" class="w-14 h-14 bg-sky-600 text-white rounded-full flex items-center justify-center shadow-lg hover:bg-sky-700 hover:scale-110 transition-all duration-300">
+      <i data-lucide="phone" class="w-6 h-6"></i>
+    </a>
+  </div>
+
+  <!-- Footer -->
+  <footer id="contact" class="bg-slate-900 pt-16 pb-8 text-slate-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid md:grid-cols-3 gap-12 border-b border-slate-800 pb-12 mb-8">
+        <div>
+          <div class="flex items-center mb-6">
+             <div class="w-10 h-10 bg-gradient-to-br from-sky-500 to-blue-700 rounded-xl flex items-center justify-center mr-3">
+              <i data-lucide="brain" class="w-6 h-6 text-white"></i>
+            </div>
+            <div>
+              <h2 class="text-xl font-bold text-white leading-tight">Sri Sri <span class="text-sky-500">Psychiatric Clinic</span></h2>
+            </div>
+          </div>
+          <p class="text-slate-400 mb-6 leading-relaxed">
+            Dedicated to providing premium, compassionate, and advanced psychiatric care for the mind and brain under the expert guidance of Dr. K Suresh Reddy.
+          </p>
+        </div>
+        
+        <div>
+          <h3 class="text-white font-bold text-lg mb-6">Quick Links</h3>
+          <ul class="space-y-3">
+            <li><button onclick="scrollToSection('home')" class="hover:text-sky-400 transition-colors flex items-center"><i data-lucide="chevron-right" class="w-4 h-4 mr-2 text-slate-600"></i> Home</button></li>
+            <li><button onclick="scrollToSection('about')" class="hover:text-sky-400 transition-colors flex items-center"><i data-lucide="chevron-right" class="w-4 h-4 mr-2 text-slate-600"></i> About</button></li>
+            <li><button onclick="scrollToSection('services')" class="hover:text-sky-400 transition-colors flex items-center"><i data-lucide="chevron-right" class="w-4 h-4 mr-2 text-slate-600"></i> Services</button></li>
+            <li><button onclick="scrollToSection('appointment')" class="hover:text-sky-400 transition-colors flex items-center"><i data-lucide="chevron-right" class="w-4 h-4 mr-2 text-slate-600"></i> Appointment</button></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="text-white font-bold text-lg mb-6">Contact Us</h3>
+          <ul class="space-y-4">
+            <li class="flex items-start">
+              <i data-lucide="map-pin" class="w-5 h-5 mr-3 text-sky-500 shrink-0 mt-0.5"></i>
+              <span>Bhavya's Srinivasam Complex, Beside ICICI Bank, Opp. Vertex Prestige, Nizampet, Hyderabad</span>
+            </li>
+            <li class="flex items-center">
+              <i data-lucide="phone" class="w-5 h-5 mr-3 text-sky-500 shrink-0"></i>
+              <span>09014385089</span>
+            </li>
+            <li class="flex items-start">
+              <i data-lucide="clock" class="w-5 h-5 mr-3 text-sky-500 shrink-0 mt-0.5"></i>
+              <span>Mon - Sat: 10:00 AM - 8:00 PM<br/>Sunday: Closed</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="flex flex-col md:flex-row justify-between items-center text-sm text-slate-500">
+        <p>&copy; <span id="year"></span> Sri Sri Psychiatric Clinic - Dr. K Suresh Reddy. All rights reserved.</p>
+        <p class="mt-2 md:mt-0">Premium Psychiatric Care</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    // Initialize Icons
+    lucide.createIcons();
+
+    // Set Copyright Year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Scroll Function
+    function scrollToSection(id) {
+      document.getElementById('mobile-menu').classList.add('hidden');
+      document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // Menu Toggle
+    function toggleMenu() {
+      document.getElementById('mobile-menu').classList.toggle('hidden');
+    }
+
+    // Fade-in Observer Animation
+    document.addEventListener("DOMContentLoaded", () => {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.remove('opacity-0', 'translate-y-12');
+            entry.target.classList.add('opacity-100', 'translate-y-0');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+      document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+    });
+
+    // Appointment Logic
+    const dateInput = document.getElementById('appointment-date');
+    const timingsDiv = document.getElementById('available-timings');
+    const timingsLabel = document.getElementById('timings-label');
+    const confirmBtnDiv = document.getElementById('confirm-btn-container');
+    const formStatus = document.getElementById('form-status');
+    const selectedTimeText = document.getElementById('selected-time-text');
+    let selectedTime = '';
+
+    dateInput.addEventListener('change', (e) => {
+      if (e.target.value) {
+        timingsDiv.classList.remove('hidden');
+        timingsLabel.innerText = `Available Timings for ${e.target.value}`;
+        selectedTime = '';
+        updateTimeButtons();
+        confirmBtnDiv.classList.add('hidden');
+      } else {
+        timingsDiv.classList.add('hidden');
+      }
+    });
+
+    function selectTime(time) {
+      selectedTime = time;
+      updateTimeButtons();
+      confirmBtnDiv.classList.remove('hidden');
+      selectedTimeText.innerText = `You are booking a slot for ${dateInput.value} at ${time}.`;
+    }
+
+    function updateTimeButtons() {
+      document.querySelectorAll('.time-btn').forEach(btn => {
+        if (btn.dataset.time === selectedTime) {
+          btn.className = 'time-btn py-3 px-4 rounded-xl border font-medium transition-all bg-sky-600 text-white border-sky-600 shadow-md';
+        } else {
+          btn.className = 'time-btn py-3 px-4 rounded-xl border font-medium transition-all bg-white text-slate-600 border-slate-200 hover:border-sky-300 hover:bg-sky-50';
+        }
+      });
+    }
+
+    function confirmAppointment() {
+      formStatus.innerHTML = `
+        <div class="mb-6 p-4 rounded-xl bg-green-50 text-green-700 border border-green-200 flex items-center">
+          <i data-lucide="calendar-check" class="w-5 h-5 mr-3 flex-shrink-0"></i>
+          <p class="text-sm font-medium">Thank you! Your appointment for ${dateInput.value} at ${selectedTime} is confirmed. Our clinic will contact you shortly.</p>
+        </div>
+      `;
+      lucide.createIcons(); // re-init icons for dynamic DOM
+      
+      setTimeout(() => {
+        formStatus.innerHTML = '';
+        dateInput.value = '';
+        timingsDiv.classList.add('hidden');
+        confirmBtnDiv.classList.add('hidden');
+        selectedTime = '';
+        updateTimeButtons();
+      }, 5000);
+    }
+  </script>
+</body>
+</html>
